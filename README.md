@@ -1,9 +1,9 @@
-# tot-group5-LLM4PCG
+# tot-LLM4PCG-evaluation-vit
 # README
 
 ## Overview
-This project implements a pipeline for generating, visualizing, and evaluating structures based on block placement commands. It uses a Vision Transformer (ViT) model to assess the similarity between generated structures and predefined targets (letters A-Z).
-
+1.This project implements a pipeline for generating, visualizing, and evaluating structures based on block placement commands. It uses a Vision Transformer (ViT) model to assess the similarity between generated structures and predefined targets (letters A-Z).
+(Modified chatgpt4PCG so that it can use the local open source LLM API through LM studio。)
 ## Features
 - **Structure Initialization**: Creates a grid for block placement.
 - **Block Placement Simulation**: Simulates dropping blocks of various shapes (`b11`, `b31`, `b13`) onto the grid.
@@ -11,8 +11,13 @@ This project implements a pipeline for generating, visualizing, and evaluating s
 - **Evaluation**: Uses the `pittawat/vit-base-uppercase-english-characters` ViT model to evaluate the similarity between generated structures and target letters.
 - **Result Management**: Identifies and saves the best-matching structure for each target letter.
 
+## Environment
+- LM studio 0.3.5
+- GPU:A100 80G*4
+- LLM Model:qwen2.5-coder-32b-instruct FP16 65.54G
+
 ## Dependencies
-- Python 3.11+
+- Python 3.11.5
 - PyTorch
 - Transformers
 - NumPy
@@ -25,22 +30,28 @@ pip install torch transformers numpy matplotlib pillow
 ```
 
 ## Usage
-
+### 1.Running the Script
+To process all results and save the best structures for each letter, execute:
+```bash
+python tot.py
+```
 ### Input Structure
 The input folder structure should be organized as follows:
 ```
-./tree_of_thought2/raw/
+./tree_of_thought/raw/
     A/
-        result1.txt
-        result2.txt
+        tree_of_thought_A_1.txt
+        tree_of_thought_A_2.txt
+        ...
     B/
-        result1.txt
-        result2.txt
+        tree_of_thought_B_1.txt
+        tree_of_thought_B_2.txt
+        ...
     ...
 ```
 Each `.txt` file contains block placement commands for a specific letter.
 
-### Running the Script
+### 2.Running the Script
 To process all results and save the best structures for each letter, execute:
 ```bash
 python evaluation-vit.py
@@ -51,11 +62,11 @@ The output folder will be organized as follows:
 ```
 ./best_results/
     A/
-        best_result.txt
-        best_result.png
+        tree_of_thought_A_6.png
+        tree_of_thought_A_6.txt
     B/
-        best_result.txt
-        best_result.png
+        tree_of_thought_B_2.png
+        tree_of_thought_B_2.txt
     ...
 ```
 Each `.txt` file contains the cleaned and validated block placement commands, and each `.png` file visualizes the best structure.
@@ -82,5 +93,5 @@ Processes all `.txt` files in the `input_folder` for a specific `target_letter`.
 - The script suppresses `FutureWarning` messages for a cleaner output.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+None
 

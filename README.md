@@ -2,7 +2,7 @@
 
 ## Overview
 1.This project implements a pipeline for generating, visualizing, and evaluating structures based on block placement commands. It uses a Vision Transformer (ViT) model to assess the similarity between generated structures and predefined targets (letters A-Z).
-(Modified chatgpt4PCG so that it can use the local open source LLM API through LM studio。)
+(also modified chatgpt4PCG so that it can use the local open source LLM API through LM studio.)
 ## Features
 - **Structure Initialization**: Creates a grid for block placement.
 - **Block Placement Simulation**: Simulates dropping blocks of various shapes (`b11`, `b31`, `b13`) onto the grid.

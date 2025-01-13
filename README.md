@@ -1,5 +1,4 @@
 # tot-LLM4PCG-evaluation-vit
-# README
 
 ## Overview
 1.This project implements a pipeline for generating, visualizing, and evaluating structures based on block placement commands. It uses a Vision Transformer (ViT) model to assess the similarity between generated structures and predefined targets (letters A-Z).
